@@ -1,16 +1,14 @@
 import React from "react";
-import './App.css';
+import "./App.css";
+import { useHover } from "./useHover";
 
-
-function App() {
+function Demo() {
+  const { hovered, ref } = useHover();
 
   return (
-    <>
-      Hello React!
-    </>
+    <div ref={ref}>
+      {hovered ? "На меня навели мышку" : "Наведи мышкой на меня" }
+    </div>
   );
 }
-
-
-
-export default App;
+export default Demo;
