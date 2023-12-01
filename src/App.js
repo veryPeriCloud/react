@@ -1,14 +1,29 @@
-import React from "react";
+import { useRef } from "react";
 import "./App.css";
-import { useHover } from "./useHover";
+import Signin from "./components/Signin";
+import Signup from "./components/Signup";
 
 function Demo() {
-  const { hovered, ref } = useHover();
+  const formRef = useRef(null);
+  const signupRef = useRef(null)
+
+  const onSubmit = (event, arg) => {
+    event.preventDefault();
+    console.log("onsubmit", arg);
+  };
 
   return (
-    <div ref={ref}>
-      {hovered ? "На меня навели мышку" : "Наведи мышкой на меня" }
+    <div className="container">
+      <Signin
+        ref={formRef}
+        onSubmit={onSubmit}
+      />
+      <Signup
+        ref={signupRef}
+        onSubmit={onSubmit}
+      />
     </div>
-  );
+  )
 }
+
 export default Demo;
